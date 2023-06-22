@@ -1,3 +1,4 @@
+import cors from 'cors';
 import 'express-async-errors'
 import express ,{ Application } from "express";
 import { handleErrors } from "./errors";
@@ -9,6 +10,7 @@ import deviceRoutes from './routers/device.routes';
 const app: Application = express();
 
 app.use(express.json())
+app.use(cors());
 
 app.use('/admin', adminRoutes);
 app.use('/login', loginRoutes);
