@@ -1,5 +1,11 @@
-import {Admin} from "./admin.entity";
+import { Admin } from "./admin.entity";
+import { Address } from "./address.entity";
+import { Client } from "./client.entity";
+import { Device } from "./device.entity";
 
 export {
-    Admin
+    Admin,
+    Address,
+    Client,
+    Device
 }

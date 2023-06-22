@@ -22,6 +22,8 @@ const ensureTokenIsValidMiddleware = async (req:Request, res:Response, next:Next
             id: Number(decoded.sub),
             nomeLoja: decoded.nomeLoja
         }
+
+        return next()
     })
 
 }
