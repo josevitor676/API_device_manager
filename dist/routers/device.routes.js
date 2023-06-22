@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const device_controller_1 = require("../controllers/device.controller");
+const ensureDataIsValid_middleware_1 = __importDefault(require("../middlewares/ensureDataIsValid.middleware"));
+const device_schemas_1 = require("../schemas/device.schemas");
+const ensureTokenIsValid_middleware_1 = __importDefault(require("../middlewares/ensureTokenIsValid.middleware"));
+const ensureDeviceExists_middleware_1 = __importDefault(require("../middlewares/ensureDeviceExists.middleware"));
+const deviceRoutes = (0, express_1.Router)();
+deviceRoutes.post('/:idClient', ensureTokenIsValid_middleware_1.default, (0, ensureDataIsValid_middleware_1.default)(device_schemas_1.createDeviceSchema), device_controller_1.createDeviceController);
+deviceRoutes.get('/info', ensureTokenIsValid_middleware_1.default, device_controller_1.getDeviceByDateController);
+deviceRoutes.get('/', ensureTokenIsValid_middleware_1.default, device_controller_1.getAllDeviceController);
+deviceRoutes.get('/:idClient', ensureTokenIsValid_middleware_1.default, device_controller_1.getDevicesByClient);
+deviceRoutes.delete('/completed/:id', ensureTokenIsValid_middleware_1.default, ensureDeviceExists_middleware_1.default, device_controller_1.softDeleteDeviceController);
+deviceRoutes.delete('/delete/:id', ensureTokenIsValid_middleware_1.default, ensureDeviceExists_middleware_1.default, device_controller_1.deleteDeviceByIdController);
+deviceRoutes.patch('/:id', ensureTokenIsValid_middleware_1.default, ensureDeviceExists_middleware_1.default, (0, ensureDataIsValid_middleware_1.default)(device_schemas_1.updateDeviceSchema), device_controller_1.updateDeviceController);
+exports.default = deviceRoutes;
