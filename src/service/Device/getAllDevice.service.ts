@@ -20,8 +20,8 @@ const getAllDeviceService = async (pagination:any): Promise<IReturnAllDevice> =>
         }
     });
 
-    let prev: string | null = `http://localhost:3000/device?page=${page - 1}&per_page=${per_page}`
-    let next: string | null = `http://localhost:3000/device?page=${page + 1}&per_page=${per_page}`
+    let prev: string | null = `https://device-manager-api.onrender.com/device?page=${page - 1}&per_page=${per_page}`
+    let next: string | null = `https://device-manager-api.onrender.com/device?page=${page + 1}&per_page=${per_page}`
 
     const data = {
         prev: page === 1 ? prev = null : allDevice.length === 0 ? prev = null : prev ,

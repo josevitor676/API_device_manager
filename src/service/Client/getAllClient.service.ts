@@ -21,8 +21,8 @@ const getAllClientService = async (pagination: any): Promise<IReturnAllClient> =
         }
     });
 
-    let prev: string | null = `http://localhost:3000/client?page=${page - 1}&per_page=${per_page}`
-    let next: string | null = `http://localhost:3000/client?page=${page + 1}&per_page=${per_page}`
+    let prev: string | null = `https://device-manager-api.onrender.com/client?page=${page - 1}&per_page=${per_page}`
+    let next: string | null = `https://device-manager-api.onrender.com/client?page=${page + 1}&per_page=${per_page}`
     
     const listAllClient = {
         prev: page === 1 ? prev = null : allClient.length === 0 ? prev = null : prev,
