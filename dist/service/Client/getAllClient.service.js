@@ -23,8 +23,8 @@ const getAllClientService = (pagination) => __awaiter(void 0, void 0, void 0, fu
             address: true
         }
     });
-    let prev = `http://localhost:3000/client?page=${page - 1}&per_page=${per_page}`;
-    let next = `http://localhost:3000/client?page=${page + 1}&per_page=${per_page}`;
+    let prev = `https://device-manager-api.onrender.com/client?page=${page - 1}&per_page=${per_page}`;
+    let next = `https://device-manager-api.onrender.com/client?page=${page + 1}&per_page=${per_page}`;
     const listAllClient = {
         prev: page === 1 ? prev = null : allClient.length === 0 ? prev = null : prev,
         next: allClient.length === 0 ? next = null : next,
